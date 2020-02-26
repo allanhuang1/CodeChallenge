@@ -1,6 +1,7 @@
 # CodeChallenge
 Use:
 Download and install (downloader).py to run main function. 
+Run file as executable with command : chmod +x downloader
 
 Sample inputs:
 downloader as main function, URL name as required argument, -c as optional argument with number of threads
