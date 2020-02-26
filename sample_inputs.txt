@@ -1,0 +1,18 @@
+""" Downloads xlsx file from bart website without multiple threads option """
+1)
+
+./downloader http://64.111.127.166/ridership/Ridership_201901.xlsx
+
+
+"""Downloads xlsx file from bart website with 4 threads """
+2)
+
+./downloader http://64.111.127.166/ridership/Ridership_201901.xlsx -c 4
+
+
+""" Downloads two different xlsx file from bart website concurrently with multiple threads option """
+3)
+
+./downloader http://64.111.127.166/ridership/Ridership_201901.xlsx http://64.111.127.166/ridership/Ridership_202001.xlsx -c 3
+
+
