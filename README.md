@@ -5,9 +5,9 @@ Download and install CLI.py to run main function.
 Sample inputs:
 
 
-python3 CLI.py <URL> 
+python3 CLI.py (URL_NAME) 
 
-python3 CLI.py <URL> -c nThreads
+python3 CLI.py (URL_NAME) -c nThreads
   
   
 CLI.py has two main functions that handle file downloads through the command line. For the args_thread_handler() function it uses argparse to implement the CLI and any arguments that required or optional to be parsed. It requires the user to input an URL to be downloaded with the optional argument -c nThreads that specify the number of threads to be used during download. 
