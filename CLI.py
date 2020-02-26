@@ -1,0 +1,85 @@
+import threading
+import argparse
+from tqdm import tqdm
+import requests
+
+
+
+
+def downloader(url):
+    """ Download specified URLs through chunks to avoid reading whole thing in memory
+    Shows progress bar for each download"""
+
+    try:
+        chunk_size = 1024 #number of bytes to be read each time
+
+        r = requests.get(url, stream=True)
+
+        total_size = int(r.headers['content-length'])
+
+        filename = url.split('/')[-1].split('?')[0]
+
+
+        with open(filename, 'wb') as f:
+            for data in tqdm(iterable=r.iter_content(chunk_size=chunk_size), total= total_size / chunk_size, unit='KB'):
+                f.write(data)
+
+        print("Download Completed")
+
+        f.close()
+
+    except:
+
+        print("Error, file can not be downloaded at: " + url)
+
+def args_thread_handler():
+    """ Handles command line interface with specified arguments for URL to be downloaded
+    Handles download with multiple threads and multiple URLS to be downloaded concurrently """
+
+
+    parser = argparse.ArgumentParser(description="File Downloader(Multi-threaded): "
+                                                 "Can pass multiple URLS to be downloaded  ")
+
+    parser.add_argument('URLS', metavar='u', nargs='+', help="URL to be download. More than one can be specified.")
+
+    parser.add_argument('-c', nargs=1, help="Number of threads")
+
+    args = parser.parse_args()
+
+    """Default number of threads"""
+    num_threads = 1
+
+    if args.c:
+        num_threads = int(args.c[0])
+
+    """For every URL in command line, create a separate thread for concurrent downloads"""
+
+    for url in args.URLS:
+
+        """ For number of threads specified, create number of threads for each download"""
+
+        for i in range(num_threads):
+            t = threading.Thread(target=downloader, args=(url,))
+            t.setDaemon(True)
+            t.start()
+
+        """ Join the threads and continue with download """
+
+        main_thread = threading.current_thread()
+        for t in threading.enumerate():
+            if t is main_thread:
+                continue
+            t.join()
+
+if __name__ == '__main__':
+
+    args_thread_handler()
+
+
+
+
+
+
+
+
+
