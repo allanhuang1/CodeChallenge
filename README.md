@@ -1,5 +1,6 @@
 # CodeChallenge
 Use:
+(Without executable)
 Download and install (downloader).py to run main function. 
 Run file as executable with command : chmod +x downloader
 
