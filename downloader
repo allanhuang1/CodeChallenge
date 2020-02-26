@@ -7,7 +7,6 @@ import requests
 
 
 
-
 def downloader(url):
     """ Download specified URLs through chunks to avoid reading whole thing in memory
     Shows progress bar for each download"""
@@ -76,12 +75,3 @@ def args_thread_handler():
 if __name__ == '__main__':
 
     args_thread_handler()
-
-
-
-
-
-
-
-
-
