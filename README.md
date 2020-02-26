@@ -3,6 +3,8 @@ Use:
 Download and install CLI.py to run main function. 
 
 Sample inputs:
+
+
 python3 CLI.py <URL> 
 
 python3 CLI.py <URL> -c nThreads
