@@ -3,7 +3,7 @@ Use:
 Download and install CLI.py to run main function. 
 
 Sample inputs:
-
+Specify python3 as language, CLI.py as main function, URL name as required argument, -c as optional argument with number of threads
 
 python3 CLI.py (URL_NAME) 
 
